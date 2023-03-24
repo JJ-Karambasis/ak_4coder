@@ -1,15 +1,16 @@
 ////////////////////////////////
 // NOTE(allen): Default Mixer Helpers
 
-// TODO(allen): intrinsics wrappers
-#if OS_LINUX
-#include <immintrin.h>
-#define _InterlockedExchangeAdd __sync_fetch_and_add
-#elif OS_MAC
-#include <immintrin.h>
-#define _InterlockedExchangeAdd __sync_fetch_and_add
+//TODO(jj): Maybe this can be wrap in a header
+//TODO(jj): Also probably needs to be done better
+#if OS_MAC
+#include <libkern/OSAtomic.h>
+#define _InterlockedExchangeAdd(a, b) OSAtomicAdd32Barrier(b, (volatile int32_t*)a)
+#define _spin()
 #else
-#include <intrin.h>
+#include <immintrin.h>
+#define _InterlockedExchangeAdd __sync_fetch_and_add
+#define _spin _mm_pause()
 #endif
 
 function u32
@@ -24,7 +25,7 @@ function void
 def_audio_begin_ticket_mutex(Audio_System *Crunky)
 {
  u32 Ticket = AtomicAddU32AndReturnOriginal(&Crunky->ticket, 1);
- while(Ticket != Crunky->serving) {_mm_pause();}
+ while(Ticket != Crunky->serving) {_spin();}
 }
 
 function void

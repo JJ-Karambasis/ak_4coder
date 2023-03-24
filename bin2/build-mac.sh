@@ -23,7 +23,7 @@ if [ -z "$BUILD_MODE" ]; then
     BUILD_MODE="-DDEV_BUILD"
 fi
 
-WARNINGS="-Wno-write-strings -Wno-comment -Wno-null-dereference -Wno-logical-op-parentheses -Wno-switch"
+WARNINGS="-Wno-write-strings -Wno-comment -Wno-null-dereference -Wno-logical-op-parentheses -Wno-deprecated-declarations -Wno-switch"
 
 FLAGS="-D_GNU_SOURCE -fPIC -fpermissive $BUILD_MODE"
 INCLUDES="-I$SRC_ROOT -I$CUSTOM_ROOT"

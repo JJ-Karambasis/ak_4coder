@@ -1,0 +1,3 @@
+[submodule "third-party/ak_libs"]
+	path = third-party/ak_libs
+	url = https://github.com/JJ-Karambasis/ak_libs.git

@@ -228,7 +228,6 @@ enum{
 
 api(custom)
 typedef u32 Buffer_Reopen_Flag;
-enum{};
 
 api(custom)
 typedef u32 Buffer_Kill_Result;

@@ -57,7 +57,7 @@ GetFinalPathNameByHandle_utf8(Arena *scratch, HANDLE file, u8 *file_path_out, DW
 }
 
 internal HANDLE
-FindFirstFile_utf8(Arena *scratch, u8 *name, LPWIN32_FIND_DATA find_data){
+FindFirstFile_utf8(Arena *scratch, u8 *name, LPWIN32_FIND_DATAW find_data){
     Temp_Memory temp = begin_temp(scratch);
     String_u16 name_16 = string_u16_from_string_u8(scratch, SCu8(name), StringFill_NullTerminate);
     HANDLE result = FindFirstFileW((LPWSTR)name_16.str, find_data);
@@ -91,7 +91,7 @@ GetModuleFileName_utf8(Arena *scratch, HMODULE module, u8 *file_out, DWORD max){
 }
 
 internal BOOL
-CreateProcess_utf8(Arena *scratch, u8 *app_name, u8 *command, LPSECURITY_ATTRIBUTES security, LPSECURITY_ATTRIBUTES thread, BOOL inherit_handles, DWORD creation, LPVOID environment, u8 *curdir, LPSTARTUPINFO startup, LPPROCESS_INFORMATION process){
+CreateProcess_utf8(Arena *scratch, u8 *app_name, u8 *command, LPSECURITY_ATTRIBUTES security, LPSECURITY_ATTRIBUTES thread, BOOL inherit_handles, DWORD creation, LPVOID environment, u8 *curdir, LPSTARTUPINFOW startup, LPPROCESS_INFORMATION process){
     Temp_Memory temp = begin_temp(scratch);
     String_u16 app_name_16 = string_u16_from_string_u8(scratch, SCu8(app_name), StringFill_NullTerminate);
     String_u16 command_16 = string_u16_from_string_u8(scratch, SCu8(command), StringFill_NullTerminate);

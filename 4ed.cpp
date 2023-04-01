@@ -265,7 +265,7 @@ App_Init_Sig(app_init){
         String8 binary_path = system_get_path(scratch, SystemPath_Binary);
         
         //TODO(jj): We probably should be loading a fallback font via the platform, instead of hardcoding a truetype file
-        String8 full_path = push_u8_stringf(arena, "%.*sfonts/liberation-mono.ttf", string_expand(binary_path));
+        String8 full_path = push_u8_stringf(arena, "%.*sresources/liberation-mono.ttf", string_expand(binary_path));
         
         Face_Description description = {};
         description.font.file_name = full_path;
@@ -867,7 +867,7 @@ App_Step_Sig(app_step){
     return(app_result);
 }
 
-extern "C" App_Get_Functions_Sig(app_get_functions){
+extern "C" ak_stl_shared_export App_Get_Functions_Sig(app_get_functions){
     App_Functions result = {};
     
     result.load_vtables = app_load_vtables;

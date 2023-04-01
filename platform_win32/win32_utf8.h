@@ -19,7 +19,7 @@ function DWORD
 GetFinalPathNameByHandle_utf8(Arena *scratch, HANDLE file, u8 *file_path_out, DWORD path_max, DWORD flags);
 
 function HANDLE
-FindFirstFile_utf8(Arena *scratch, u8 *name, LPWIN32_FIND_DATA find_data);
+FindFirstFile_utf8(Arena *scratch, u8 *name, LPWIN32_FIND_DATAW find_data);
 
 function DWORD
 GetFileAttributes_utf8(Arena *scratch, u8 *name);
@@ -28,7 +28,7 @@ function DWORD
 GetModuleFileName_utf8(Arena *scratch, HMODULE module, u8 *file_out, DWORD max);
 
 function BOOL
-CreateProcess_utf8(Arena *scratch, u8 *app_name, u8 *command, LPSECURITY_ATTRIBUTES security, LPSECURITY_ATTRIBUTES thread, BOOL inherit_handles, DWORD creation, LPVOID environment, u8 *curdir, LPSTARTUPINFO startup, LPPROCESS_INFORMATION process);
+CreateProcess_utf8(Arena *scratch, u8 *app_name, u8 *command, LPSECURITY_ATTRIBUTES security, LPSECURITY_ATTRIBUTES thread, BOOL inherit_handles, DWORD creation, LPVOID environment, u8 *curdir, LPSTARTUPINFOW startup, LPPROCESS_INFORMATION process);
 
 function DWORD
 GetCurrentDirectory_utf8(Arena *scratch, DWORD max, u8 *buffer);

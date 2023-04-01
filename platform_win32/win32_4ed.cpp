@@ -512,8 +512,8 @@ system_cli_call_sig(){
     HANDLE out_write = INVALID_HANDLE_VALUE;
     if (CreatePipe(&out_read, &out_write, &security_atrb, 0)){
         if (SetHandleInformation(out_read, HANDLE_FLAG_INHERIT, 0)){
-            STARTUPINFO startup = {};
-            startup.cb = sizeof(STARTUPINFO);
+            STARTUPINFOW startup = {};
+            startup.cb = sizeof(STARTUPINFOW);
             startup.dwFlags = STARTF_USESHOWWINDOW | STARTF_USESTDHANDLES;
             
             HANDLE in_read = CreateFileA("nul", GENERIC_READ, FILE_SHARE_READ|FILE_SHARE_WRITE|FILE_SHARE_DELETE, &security_atrb, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, 0);

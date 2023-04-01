@@ -1,3 +1,6 @@
 [submodule "third-party/ak_libs"]
 	path = third-party/ak_libs
 	url = https://github.com/JJ-Karambasis/ak_libs.git
+[submodule "third-party/freetype"]
+	path = third-party/freetype
+	url = https://github.com/freetype/freetype.git

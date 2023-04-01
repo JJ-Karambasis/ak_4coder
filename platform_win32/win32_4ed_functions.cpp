@@ -296,7 +296,7 @@ system_get_file_list_sig(){
         search_pattern = push_u8_stringf(arena, "%.*s\\*", string_expand(directory));
     }
     
-    WIN32_FIND_DATA find_data = {};
+    WIN32_FIND_DATAW find_data = {};
     HANDLE search = FindFirstFile_utf8(arena, search_pattern.str, &find_data);
     if (search != INVALID_HANDLE_VALUE){
         File_Info *first = 0;
@@ -320,7 +320,7 @@ system_get_file_list_sig(){
                 info->attributes.last_write_time = win32_u64_from_filetime(find_data.ftLastWriteTime);
                 info->attributes.flags = win32_convert_file_attribute_flags(find_data.dwFileAttributes);
             }
-            if (!FindNextFile(search, &find_data)){
+            if (!FindNextFileW(search, &find_data)){
                 break;
             }
         }
@@ -474,7 +474,7 @@ color_picker_hook(HWND Window, UINT Message, WPARAM WParam, LPARAM LParam){
             if(GetDlgCtrlID(swatch_window) == 0x2c5)
             {
                 CHOOSECOLORW *win32_params =
-                    (CHOOSECOLORW *)GetWindowLongPtr(Window, GWLP_USERDATA);
+                (CHOOSECOLORW *)GetWindowLongPtr(Window, GWLP_USERDATA);
                 if(win32_params)
                 {
                     Color_Picker *picker = (Color_Picker*)win32_params->lCustData;

@@ -1,0 +1,26 @@
+keys_global = {
+    { "change_active_panel",           "P", "Alt" },
+    { "change_active_panel_backwards", "P", "Alt", "Shift" },
+    { "interactive_new",               "N", "Alt" },
+    { "interactive_open_or_new",       "F", "Alt" },
+    { "open_in_other",                 "F", "Alt", "Shift" },
+    { "interactive_kill_buffer",       "K", "Alt" },
+    { "interactive_switch_buffer",     "O", "Alt" },
+    { "save_all_dirty_buffers",        "S", "Alt", "Shift" },
+    { "command_lister",                "X", "Alt" },
+    { "exit_4coder",                   "F4", "Alt" },
+};
+
+modal_shared = {
+    { "switch_modal", "I", "Alt" },
+};
+
+modal_normal = {
+    { "move_up", "I"},
+    { "move_down", "K"}, 
+};
+
+modal_write = {
+    { "backspace_char", "D"},
+    { "delete_char", "D", "Shift"}, 
+};

@@ -1,0 +1,53 @@
+version(2);
+
+project_name = "4coder";
+
+patterns = {
+    "*.c", 
+    "*.cpp", 
+    "*.h", 
+    "*.m", 
+    "*.mm", 
+    "*.bat", 
+    "*.sh", 
+    "*.4coder", 
+    "*.txt"
+};
+
+load_paths = {
+    .win = {
+        { .path = ".", .recursive = true, .relative = true, },
+    },
+    .linux = {
+        { .path = ".", .recursive = true, .relative = true, },
+    },
+    .mac = {
+        { .path = ".", .recursive = true, .relative = true, },
+    },
+};
+
+commands = {
+    .build = {
+        .win = "build\build.bat",
+        .linux = "build/build.sh",
+        .mac = "build/build.sh",
+        .out = "*compilation",
+        .footer_panel = true,
+        .save_dirty_files = true,
+        .cursor_at_end = false
+    },
+    .build_custom = {
+        .win = "custom\build\build.bat",
+        .linux = "custom/build/build.sh",
+        .mac = "custom/build/build.sh",
+        .out = "*compilation",
+        .footer_panel = true,
+        .save_dirty_files = true,
+        .cursor_at_end = false
+    },
+};
+
+fkey_command = {
+    .F1 = "build",
+    .F2 = "build_custom"
+};

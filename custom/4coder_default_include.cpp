@@ -99,6 +99,8 @@
 #include "4coder_default_map.cpp"
 #include "4coder_mac_map.cpp"
 
+#include "4coder_file.h"
+
 #include "4coder_default_framework_variables.cpp"
 #include "4coder_default_colors.cpp"
 #include "4coder_helper.cpp"
@@ -145,8 +147,8 @@
 #include "4coder_examples.cpp"
 
 #include "4coder_default_hooks.cpp"
+#include "4coder_modal.cpp"
 
 #endif
 
 // BOTTOM
-

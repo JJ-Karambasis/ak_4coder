@@ -3,7 +3,7 @@
 */
 
 // TOP
-
+#if 0 
 function void
 setup_default_mapping(Mapping *mapping, i64 global_id, i64 file_id, i64 code_id){
     MappingScope();
@@ -146,6 +146,6 @@ setup_default_mapping(Mapping *mapping, i64 global_id, i64 file_id, i64 code_id)
     Bind(write_zero_struct,          KeyCode_0, KeyCode_Control);
     Bind(jump_to_definition_at_cursor, KeyCode_W, KeyCode_Control);
 }
-
+#endif
 // BOTTOM
 

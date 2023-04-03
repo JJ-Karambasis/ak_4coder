@@ -45,6 +45,9 @@ CUSTOM_ID(colors, defcolor_back_cycle);
 CUSTOM_ID(colors, defcolor_text_cycle);
 CUSTOM_ID(colors, defcolor_line_numbers_back);
 CUSTOM_ID(colors, defcolor_line_numbers_text);
+CUSTOM_ID(colors, defcolor_cursor_write);
+CUSTOM_ID(colors, defcolor_at_cursor_write);
+CUSTOM_ID(colors, defcolor_margin_active_write);
 
 struct Color_Table_Node{
     Color_Table_Node *next;

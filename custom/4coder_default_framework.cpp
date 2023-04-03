@@ -577,7 +577,7 @@ CUSTOM_DOC("Clear the theme list")
 }
 
 ////////////////////////////////
-
+#if 0 
 function void
 setup_essential_mapping(Mapping *mapping, i64 global_id, i64 file_id, i64 code_id){
     MappingScope();
@@ -602,6 +602,7 @@ setup_essential_mapping(Mapping *mapping, i64 global_id, i64 file_id, i64 code_i
     ParentMap(file_id);
     BindTextInput(write_text_and_auto_indent);
 }
+#endif
 
 function void
 default_4coder_initialize(Application_Links *app, String_Const_u8_Array file_names, i32 override_font_size, b32 override_hinting){
@@ -623,28 +624,6 @@ default_4coder_initialize(Application_Links *app, String_Const_u8_Array file_nam
     Scratch_Block scratch(app);
     
     load_config_and_apply(app, &global_config_arena, override_font_size, override_hinting);
-    
-    String_Const_u8 bindings_file_name = string_u8_litexpr("bindings.4coder");
-    String_Const_u8 mapping = def_get_config_string(scratch, vars_save_string_lit("mapping"));
-    
-    if (string_match(mapping, string_u8_litexpr("mac-default"))){
-        bindings_file_name = string_u8_litexpr("mac-bindings.4coder");
-    }
-    else if (OS_MAC && string_match(mapping, string_u8_litexpr("choose"))){
-        bindings_file_name = string_u8_litexpr("mac-bindings.4coder");
-    }
-    
-    // TODO(allen): cleanup
-    String_ID global_map_id = vars_save_string_lit("keys_global");
-    String_ID file_map_id = vars_save_string_lit("keys_file");
-    String_ID code_map_id = vars_save_string_lit("keys_code");
-    
-    if (dynamic_binding_load_from_file(app, &framework_mapping, bindings_file_name)){
-        setup_essential_mapping(&framework_mapping, global_map_id, file_map_id, code_map_id);
-    }
-    else{
-        setup_built_in_mapping(app, mapping, &framework_mapping, global_map_id, file_map_id, code_map_id);
-    }
     
     // open command line files
     String_Const_u8 hot_directory = push_hot_directory(app, scratch);

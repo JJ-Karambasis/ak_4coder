@@ -101,6 +101,8 @@
 
 #include "4coder_file.h"
 
+#include "4coder_modal.h"
+
 #include "4coder_default_framework_variables.cpp"
 #include "4coder_default_colors.cpp"
 #include "4coder_helper.cpp"

@@ -505,6 +505,7 @@ lister_user_data_at_p(Application_Links *app, View_ID view, Lister *lister, Vec2
     return(result);
 }
 
+#if 0 
 function Lister_Result
 run_lister(Application_Links *app, Lister *lister){
     lister->filter_restore_point = begin_temp(lister->arena);
@@ -725,6 +726,14 @@ run_lister(Application_Links *app, Lister *lister){
     }
     
     return(lister->out);
+}
+#endif
+
+
+function Lister_Result
+run_lister(Application_Links *app, Lister *lister)
+{
+    return modal_run_lister(app, lister);
 }
 
 function Lister_Prealloced_String

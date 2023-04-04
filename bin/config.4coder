@@ -56,7 +56,7 @@ indent_width = 4;
 default_tab_width = 4;
 
 // Theme
-default_theme_name = "4coder";
+default_theme_name = "theme-jj";
 
 // Font
 default_font_name = "liberation-mono.ttf";

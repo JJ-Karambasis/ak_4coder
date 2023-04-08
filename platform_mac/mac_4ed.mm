@@ -692,6 +692,8 @@ mac_toggle_fullscreen(void){
 @end
 
 @implementation FCoder_View
+NSString* m_string;
+
 - (id)init{
     self = [super init];
     return(self);
@@ -946,12 +948,18 @@ mac_toggle_fullscreen(void){
 - (void)keyDown:(NSEvent*)event{
     // NOTE(yuval): Process keyboard event
     [self process_keyboard_event:event down:true];
+    
+    NSString *characters = [event charactersIgnoringModifiers];
+    
+    m_string = characters;
 	[self interpretKeyEvents:[NSArray arrayWithObject:event]];
 
     // TODO(allen): Deduplicate with insertText version
     // NOTE(allen): We need to manually send text for '\n' and '\t'
     {
-        NSString *characters = [event characters];
+        
+        
+        
         u32 len = [characters length];
         if (len == 1){
             // NOTE(yuval): Get the first utf-16 character
@@ -1036,7 +1044,7 @@ Input_Event *event = push_input_event(&mac_vars.frame_arena, &mac_vars.input_chu
 
 - (void)insertText:(id)string
   replacementRange:(NSRange)replacementRange{
-  	NSString *text = (NSString*)string;
+  	NSString *text = (NSString*)m_string;
 	u32 len = [text length];
 	Scratch_Block scratch(mac_vars.tctx);
 	u16 *utf16 = push_array(scratch, u16, len);

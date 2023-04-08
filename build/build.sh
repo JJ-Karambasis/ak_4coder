@@ -1,6 +1,6 @@
 #!/bin/bash
 
-CompileFreeType=0
+CompileFreeType=1
 
 pushd () {
     command pushd "$@" > /dev/null
@@ -47,10 +47,10 @@ FreeTypeCFiles="$FreeTypeSrcPath/base/ftsystem.c
 	$FreeTypeSrcPath/base/ftsynth.c 
 	$FreeTypeSrcPath/svg/ftsvg.c"
 
-CommonCFlags="-g -I$CurrentDirectory/../ -I$CurrentDirectory/../custom $FreeTypeIncludePath -I$CurrentDirectory/../third-party/ak_libs/stl"
+CommonCFlags="-g -O0 -I$CurrentDirectory/../ -I$CurrentDirectory/../custom $FreeTypeIncludePath -I$CurrentDirectory/../third-party/ak_libs/stl"
 
 Warnings="-Wno-writable-strings -Wno-null-dereference -Wno-switch -Wno-deprecated-declarations -Wno-nullability-completeness"
-CompilerFlags="$CommonCFlags -std=c++17 -framework Cocoa -framework QuartzCore -framework CoreServices -framework OpenGL -framework IOKit -framework Metal -framework MetalKit -L. -Wl,-rpath,'$ORIGIN' ftsystem.a"
+CompilerFlags="$CommonCFlags -std=c++17 -framework Cocoa -framework QuartzCore -framework CoreServices -framework OpenGL -framework IOKit -framework Metal -framework MetalKit ftsystem.a"
 
 pushd "$CurrentDirectory/../bin"
 
@@ -68,6 +68,8 @@ if [ $CompileFreeType == 1 ]; then
 	rm -r -d "$CurrentDirectory/../bin/freetype_temp"
 fi
 
+echo $CompilerFlags
+
 clang++ $CompilerFlags $Warnings "$CurrentDirectory/../4ed_app_target.cpp" -shared -o "4ed_app.so"
 clang++ $CompilerFlags $Warnings "$CurrentDirectory/../platform_mac/mac_4ed.mm" -o "4ed"
 
@@ -76,3 +78,5 @@ popd
 $CurrentDirectory/../custom/build/build.sh
 
 cp "$CurrentDirectory/../custom/bin/custom_4coder.so" "$CurrentDirectory/../bin/custom_4coder.so"
+
+cp -R "$CurrentDirectory/../custom/bin/custom_4coder.so.dSYM" "$CurrentDirectory/../bin/custom_4coder.so.dSYM"

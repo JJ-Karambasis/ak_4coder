@@ -15,7 +15,7 @@ if [ ! -d "$CurrentDirectory/../bin" ]; then
 	mkdir "$CurrentDirectory/../bin"
 fi
 
-CompilerFlags="-g -std=c++17 -I$CurrentDirectory/../../third-party/ak_libs/stl"
+CompilerFlags="-g -O0 -std=c++17 -I$CurrentDirectory/../../third-party/ak_libs/stl"
 Warnings="-Wno-writable-strings -Wno-null-dereference -Wno-switch -Wno-deprecated-declarations -Wno-nullability-completeness"
 
 PreprocFile="4coder_command_metadata.i"
@@ -31,7 +31,7 @@ clang++ $CompilerFlags $Warnings "$CurrentDirectory/../4coder_metadata_generator
 clang++ $CompilerFlags $Warnings "$CurrentDirectory/../4coder_default_bindings.cpp" -shared -o "custom_4coder.so"
 
 rm ./metadata_generator
-rm -rfd ./*.dSYM
+rm -rfd ./metadata_generator.dSYM
 rm $PreprocFile
 
 popd

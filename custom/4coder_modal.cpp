@@ -187,7 +187,7 @@ function b32 modal_has_code_and_modifier(Input_Event* event, Key_Code code, Key_
     return (event->key.code == code) && has_modifier(&event->key.modifiers, modifier);
 }
 
-function Lister_Result
+Lister_Result
 modal_run_lister(Application_Links *app, Lister *lister)
 {
     lister->filter_restore_point = begin_temp(lister->arena);
